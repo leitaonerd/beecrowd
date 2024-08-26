@@ -2,32 +2,33 @@
 #include <string.h>
  
 int main() {
- 
-    int n;
-    char string[50], string2[50] = {'\0'};
+    
+    int n, len;
 
     scanf("%d", &n);
     for(int i = 0; i < n; i++){
-        scanf("%s", string);
-        int k = 0, spc = 0;
-        for(unsigned int j = 0; j < strlen(string); j++){
-            if(string[j] != 32 && string[j] != 0){
-                if(spc == 0){
-                    string2[k] = string[j];
-                    spc = 1;
-                    k++;
-                }
-                else{
-                    spc = 0;
+        char string[51] = "", copia[51] = "";
+        getchar();
+        scanf("%[^\n]s", string);
+
+        len = strlen(string);
+        int jaleu = 0, idx = 0;
+        for(int j = 0; j < len; j++){
+            if(jaleu == 0){
+                if(string[j] != ' '){
+                    copia[idx] = string[j];
+                    idx++;
+                    jaleu = 1;
                 }
             }
-            else if(string[j] == 32 || string[j] == 0){
-                spc = 0;
+            else if(string[j] == ' '){
+                    jaleu = 0;
             }
         }
-        string2[k+1] = '\0';
-        printf("%s\n", string2);
+        copia[idx] = '\0';
+        printf("%s\n", copia);
     }
+    
  
     return 0;
 }
