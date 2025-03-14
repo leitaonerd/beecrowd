@@ -1,50 +1,17 @@
 #include <stdio.h>
 
-int main() {
-    int linhas, colunas, consultas, tmn_quadrado;
+int main(){
 
-    scanf("%d %d", &linhas, &colunas);
-    int matriz[linhas][colunas];  
+    int n;
+    float soma = 0, a;
+    scanf("%d", &n);
 
-    for(int i = 0; i < linhas; i++){
-        for(int j = 0; j < colunas; j++){
-            scanf("%d", &matriz[i][j]);
-        }
+    for(int i = 0; i < n; i++){
+        scanf("%f", &a);
+        soma += a;
     }
-
-    scanf("%d", &consultas);
-    for(int c = 0; c < consultas; c++){
-        int achou = 0;
-        scanf("%d", &tmn_quadrado);
-
-        for(int i = 0; i <= linhas - tmn_quadrado; i++){
-            for(int j = 0; j <= colunas - tmn_quadrado; j++){
-                int achou0sqr = 0;
-
-                for(int k = i; k < i + tmn_quadrado; k++){
-                    for(int l = j; l < j + tmn_quadrado; l++){
-                        if(matriz[k][l] == 0) {
-                            achou0sqr = 1;
-                            break;  
-                        }
-                    }
-                    if(achou0sqr) break;  
-                }
-
-                if(!achou0sqr){
-                    achou = 1;
-                    break;  
-                }
-            }
-            if(achou) break;
-        }
-
-        if(achou){
-            printf("yes\n");
-        } else {
-            printf("no\n");
-        }
-    }
+    soma = soma/n;
+    printf("A media foi %.3fn", soma);
 
     return 0;
 }
